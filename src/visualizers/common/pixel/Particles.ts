@@ -1,4 +1,5 @@
-import { PAL } from './palette';
+const WHITE = '#f4f4f4';
+const SILVER = '#94b0c2';
 
 /** Structure-of-arrays particle pool: no allocation while playing. */
 const MAX = 900;
@@ -16,7 +17,7 @@ export class Particles {
   private grav = new Float32Array(MAX);
   private drag = new Float32Array(MAX);
   private kind = new Uint8Array(MAX);
-  private color: string[] = new Array(MAX).fill(PAL.white);
+  private color: string[] = new Array(MAX).fill(WHITE);
   private count = 0;
 
   clear(): void { this.count = 0; }
@@ -45,7 +46,7 @@ export class Particles {
   dust(x: number, y: number, n: number, dir = 0, strength = 1): void {
     for (let k = 0; k < n; k++) {
       const side = dir === 0 ? (k % 2 ? 1 : -1) : dir;
-      this.emit(x + side * (1 + Math.random() * 3), y - 1, side * (15 + Math.random() * 40) * strength, -(5 + Math.random() * 25) * strength, 0.35 + Math.random() * 0.3, k % 3 ? PAL.silver : PAL.white, 1 + (Math.random() < 0.3 ? 1 : 0), 40, 4, 0);
+      this.emit(x + side * (1 + Math.random() * 3), y - 1, side * (15 + Math.random() * 40) * strength, -(5 + Math.random() * 25) * strength, 0.35 + Math.random() * 0.3, k % 3 ? SILVER : WHITE, 1 + (Math.random() < 0.3 ? 1 : 0), 40, 4, 0);
     }
   }
 

@@ -1,6 +1,6 @@
 import { mulberry32 } from '../common/math';
 import { MOODS, PAL, hexToRgb, type Mood, type MoodName } from './palette';
-import { ellipse, hash01, line } from './pixel';
+import { ellipse, hash01, line } from '../common/pixel/pixel';
 import { NONE, TILE, type Biome, type Column, type World } from './World';
 
 const LAYER_W = 512;

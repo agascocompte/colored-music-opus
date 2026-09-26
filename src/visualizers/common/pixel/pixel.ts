@@ -65,3 +65,39 @@ export function hash01(n: number): number {
   const s = Math.sin(n * 127.1 + 311.7) * 43758.5453;
   return s - Math.floor(s);
 }
+
+/** Filled pixel polygon (scanline, even-odd). Points are [x0, y0, x1, y1, ...]. */
+export function poly(c: CanvasRenderingContext2D, pts: number[], color: string): void {
+  const n = pts.length / 2;
+  if (n < 3) return;
+  let minY = Infinity, maxY = -Infinity;
+  for (let i = 1; i < pts.length; i += 2) { minY = Math.min(minY, pts[i]); maxY = Math.max(maxY, pts[i]); }
+  c.fillStyle = color;
+  const xs: number[] = [];
+  for (let y = Math.round(minY); y <= Math.round(maxY); y++) {
+    const sy = y + 0.5;
+    xs.length = 0;
+    for (let i = 0; i < n; i++) {
+      const ax = pts[i * 2], ay = pts[i * 2 + 1];
+      const bx = pts[((i + 1) % n) * 2], by = pts[((i + 1) % n) * 2 + 1];
+      if ((ay <= sy && by > sy) || (by <= sy && ay > sy)) xs.push(ax + ((sy - ay) / (by - ay)) * (bx - ax));
+    }
+    xs.sort((a, b) => a - b);
+    for (let k = 0; k + 1 < xs.length; k += 2) {
+      const x0 = Math.round(xs[k]), x1 = Math.round(xs[k + 1]);
+      if (x1 > x0) c.fillRect(x0, y, x1 - x0, 1);
+    }
+  }
+}
+
+/** Checkerboard-dithered filled ellipse: a pixel-art glow without alpha blending. */
+export function ditherEllipse(c: CanvasRenderingContext2D, cx: number, cy: number, rx: number, ry: number, color: string, phase = 0): void {
+  c.fillStyle = color;
+  cx = Math.round(cx); cy = Math.round(cy);
+  const irx = Math.max(0, Math.round(rx)), iry = Math.max(0, Math.round(ry));
+  for (let y = -iry; y <= iry; y++) {
+    const t = iry === 0 ? 0 : y / (iry + 0.5);
+    const half = Math.round(irx * Math.sqrt(Math.max(0, 1 - t * t)));
+    for (let x = -half; x <= half; x++) if (((x + y + phase) & 1) === 0) c.fillRect(cx + x, cy + y, 1, 1);
+  }
+}

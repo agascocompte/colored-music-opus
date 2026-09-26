@@ -1,5 +1,5 @@
 import { mulberry32 } from '../common/math';
-import type { BeatClock } from './BeatClock';
+import type { BeatClock } from '../common/pixel/BeatClock';
 import type { Entity, EntityPool } from './Entities';
 import { NONE, TILE, type Biome, type Column, type Decor, type World } from './World';
 

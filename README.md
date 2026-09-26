@@ -1,6 +1,6 @@
 # Colored Music · Opus
 
-Reinterpretación moderna de *Colored Music*: una experiencia audiovisual a pantalla completa con seis
+Reinterpretación moderna de *Colored Music*: una experiencia audiovisual a pantalla completa con siete
 escenas que escuchan la canción, entienden su estructura y reaccionan a ella.
 
 ## Uso
@@ -21,7 +21,7 @@ Formas de poner música:
 
 | Tecla | Acción |
 |---|---|
-| `1`–`6` | Cambiar de escena (sin cortar la música) |
+| `1`–`7` | Cambiar de escena (sin cortar la música) |
 | `Espacio` | Reproducir / pausa |
 | `←` `→` | Saltar 5 s |
 | `F` | Pantalla completa |
@@ -44,6 +44,25 @@ La interfaz desaparece sola mientras suena la música y vuelve al mover el rató
 6. **Runner** — un plataformas en pixel art que se juega solo. El nivel se escribe como una
    partitura sobre la rejilla de beats: cada salto, golpe y aterrizaje cae en un beat, y los drops
    tienen su momento especial.
+7. **Duel** — un duelo de magos en pixel art, con la misma estética y paleta que el Runner. Todo
+   el duelo es una partitura sobre la rejilla de beats: los proyectiles salen en la corchea previa y
+   impactan en el beat, los magos se lanzan hechizos como en un partido de tenis, se protegen con
+   escudos de runas, se teletransportan y chocan los bastones en los tiempos fuertes. Antes de los
+   grandes hechizos cantan su conjuro sílaba a sílaba en los beats previos; cada drop es un choque de
+   rayos que se rompe justo en el drop (y el primero hace que ambos *asciendan*: levitan, les orbitan
+   runas y les arde la punta del sombrero). En cada canción la pareja, el escenario, el ganador y el
+   tipo de duelo (remontada, dominio, intercambio constante o igualado) son aleatorios; el hechizo
+   final cae al terminar el último tramo intenso y del derrotado solo queda el sombrero. Las subidas se
+   notan: la magia del escenario fluye hacia los bastones y un gran círculo rúnico se va dibujando en
+   el suelo (una runa por beat) hasta el drop, que estalla en una onda expansiva; en los tramos
+   intensos aparecen auroras con los colores de ambos magos, el suelo responde a cada bombo y el
+   cielo a cada caja.
+
+   Magos (personajes originales): **Ignis** (fuego), **Borea** (hielo), **Volta** (tormenta),
+   **Silva** (naturaleza), **Umbra** (sombra) y **Astra** (estrellas), cada uno con sus hechizos
+   (meteoro, glaciar, relámpago, espinas, rayos…). Escenarios: torre a la luz de la luna, bosque al
+   atardecer, ruinas flotantes y caverna de cristal. Añadir un mago es añadir una entrada en
+   `src/visualizers/duel/wizards.ts`.
 
 ## Arquitectura
 

@@ -1,12 +1,12 @@
 import type { MusicFrame } from '../../analysis/types';
 import { clamp, damp } from '../common/math';
-import { BeatClock } from './BeatClock';
+import { BeatClock } from '../common/pixel/BeatClock';
 import { Composer, type Act, type JumpAct } from './Composer';
 import { EntityPool, type Entity } from './Entities';
 import { Hero, type HeroState } from './Hero';
 import { MOODS, PAL, type MoodName } from './palette';
-import { Particles } from './Particles';
-import { drawText, textWidth } from './PixelFont';
+import { Particles } from '../common/pixel/Particles';
+import { drawText, textWidth } from '../common/pixel/PixelFont';
 import { Scenery } from './Scenery';
 import { TILE, World } from './World';
 

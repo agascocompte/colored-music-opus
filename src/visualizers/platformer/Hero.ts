@@ -1,5 +1,5 @@
 import { PAL } from './palette';
-import { bitmap, ellipse, line } from './pixel';
+import { bitmap, ellipse, line } from '../common/pixel/pixel';
 
 export type HeroState = 'idle' | 'run' | 'jump' | 'fall' | 'land' | 'attack' | 'dash' | 'hit' | 'special' | 'slam';
 type Face = 'normal' | 'blink' | 'focus' | 'hurt';

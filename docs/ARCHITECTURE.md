@@ -75,6 +75,7 @@ visualizador = crear su carpeta y añadir una línea en `registry.ts`.
 5. **Loom** — telar geométrico: tabla de multiplicar modular sobre un círculo (cardioides,
    nefroides…). El multiplicador salta con los beats, las bandas tiñen los hilos.
 6. **Autoplatformer** — ver abajo.
+7. **Duel** — duelo de magos en pixel art, ver abajo.
 
 ## Autoplatformer: el nivel como partitura
 
@@ -102,6 +103,33 @@ BeatClock (beat continuo de la canción) ─► Composer ─► terreno + enemig
 - **Game** no simula nada que pueda desincronizarse: posición, salto, golpe, aterrizaje y pisadas
   (una por beat) se derivan del beat actual. Tras un *seek* la partitura se reescribe desde el
   siguiente tiempo fuerte.
+
+## Duel: un duelo de magos como partitura
+
+Reutiliza el mismo principio que el Runner y sus piezas comunes en `common/pixel` (reloj de beats,
+fuente, partículas, primitivas de píxel y la paleta Sweetie 16).
+
+- **DuelComposer** escribe, compás a compás, pistas de *keyframes* (posición y pose) para los dos
+  magos y listas de proyectiles, rayos, golpes desde el cielo/suelo y eventos. Los proyectiles salen
+  en la corchea previa y llegan en el beat; los bastonazos caen en beats; los grandes hechizos se
+  cantan en los beats previos y su impacto cae en un beat; cada drop es un choque de rayos que se
+  rompe exactamente en el drop.
+- **Guion aleatorio**: en cada reproducción se eligen pareja, arena, ganador y tipo de duelo; el daño
+  se reparte para que las barras sigan las curvas de ese guion y el K.O. caiga al final del último
+  tramo intenso.
+- **Wizard** es una marioneta de píxeles: las poses (`poses.ts`) son unos pocos números que se
+  interpolan entre *keyframes* (el bastón viaja del amago al lanzamiento). Se dibuja mirando a la
+  derecha en un canvas pequeño y se compone con volteo, inclinación y *squash & stretch*. Movimiento
+  secundario: la punta del sombrero es un muelle que reacciona a las aceleraciones, la capa es una
+  cadena *verlet*, y hay estelas en los desplazamientos rápidos.
+- **Spells** dibuja cada efecto por capas de color del elemento del mago (oscuro → principal → claro
+  → núcleo blanco); los halos son tramados (sin mezcla alfa) para mantener el aspecto pixel art.
+- **Energía**: `DuelGame` lee por adelantado la línea de tiempo: a medida que se acerca un drop (o una
+  sección más intensa) crece `build` (partículas que fluyen a los bastones, círculo rúnico que se
+  completa runa a runa, cielo que se oscurece, temblor); al cruzar el drop, onda expansiva; durante
+  las secciones intensas, auroras, anillos en cada bombo y destellos en cada caja.
+- **Arena**: cielo con tramado por bandas, astro, dos capas de parallax y suelo en losas; ventanas,
+  cristales y setas se encienden con el bombo y las islas flotantes se mecen en el beat.
 
 ## Rendimiento
 

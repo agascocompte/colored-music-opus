@@ -11,4 +11,5 @@ export const VISUALIZERS: VisualizerDescriptor[] = [
   { id: 'attractor', name: 'Attractor', tagline: 'Caos en órbita', accent: '#b69cff', load: () => import('./attractor/AttractorVisualizer') },
   { id: 'loom', name: 'Loom', tagline: 'Telar modular', accent: '#7dffb2', load: () => import('./loom/LoomVisualizer') },
   { id: 'platformer', name: 'Runner', tagline: 'Plataformas autojugado', accent: '#ffd84a', load: () => import('./platformer/PlatformerVisualizer') },
+  { id: 'duel', name: 'Duel', tagline: 'Duelo de magos', accent: '#b98cff', load: () => import('./duel/DuelVisualizer') },
 ];

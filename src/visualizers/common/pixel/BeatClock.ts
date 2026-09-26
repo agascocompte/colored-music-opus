@@ -1,4 +1,4 @@
-import type { MusicFrame, TimelineQuery } from '../../analysis/types';
+import type { MusicFrame, TimelineQuery } from '../../../analysis/types';
 
 /**
  * Continuous beat position of the song, and conversions between beats and

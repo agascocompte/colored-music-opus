@@ -1,5 +1,5 @@
 import { PAL } from './palette';
-import { bitmap, ellipse, line, ring } from './pixel';
+import { bitmap, ellipse, line, ring } from '../common/pixel/pixel';
 import type { World } from './World';
 
 export type EntityKind = 'slime' | 'bat' | 'thorn' | 'golem' | 'crate' | 'gem';

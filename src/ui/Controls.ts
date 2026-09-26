@@ -120,13 +120,13 @@ export class Controls {
       <div class="start-inner">
         <div class="wordmark"><b>Colored</b> Music</div>
         <h1>Ver la música<br><span>como un lugar.</span></h1>
-        <p>Carga una canción. Seis escenas la escuchan, la analizan y la convierten en luz, fluido, geometría… y en una partida que se juega sola al ritmo.</p>
+        <p>Carga una canción. Siete escenas la escuchan, la analizan y la convierten en luz, fluido, geometría… en una partida que se juega sola y en un duelo de magos al ritmo.</p>
         <div class="start-actions">
           <button class="btn btn-primary" data-act="open">${ICONS.open} Elegir canción</button>
           <button class="btn btn-ghost" data-act="library">${ICONS.list} Mi biblioteca</button>
           <button class="btn btn-ghost" data-act="demo">${ICONS.spark} Probar la demo</button>
         </div>
-        <div class="hint">o arrastra un archivo de audio aquí · <kbd>L</kbd> biblioteca · <kbd>1</kbd>–<kbd>6</kbd> escenas · <kbd>Espacio</kbd> pausa · <kbd>F</kbd> pantalla completa</div>
+        <div class="hint">o arrastra un archivo de audio aquí · <kbd>L</kbd> biblioteca · <kbd>1</kbd>–<kbd>7</kbd> escenas · <kbd>Espacio</kbd> pausa · <kbd>F</kbd> pantalla completa</div>
       </div>`;
     (this.start.querySelector('[data-act=open]') as HTMLElement).onclick = () => this.fileInput.click();
     (this.start.querySelector('[data-act=demo]') as HTMLElement).onclick = () => this.h.playDemo();
